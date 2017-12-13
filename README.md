@@ -11,4 +11,3 @@
 ### deploying
 * clone [ecs-deploy](https://github.com/silinternational/ecs-deploy) into a ~/src folder
 * `bash deploy.sh testing | production`
-# newsroom-api
