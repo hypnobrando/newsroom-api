@@ -1,4 +1,5 @@
 from sanic import Sanic
+from sanic_cors import CORS
 
 from users import users
 from comments import comments
@@ -10,6 +11,7 @@ app.blueprint(users)
 app.blueprint(comments)
 app.blueprint(pages)
 app.blueprint(etc)
+CORS(app)
 
 if __name__ == "__main__":
     print('Starting up newsroom server...')
