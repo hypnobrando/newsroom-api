@@ -1,7 +1,7 @@
 import json
-import datetime
-from pymongo import MongoClient
+from pymongo import MongoClient, DESCENDING
 from bson import ObjectId
+from datetime import datetime, date
 
 from config.config import Config
 
@@ -53,7 +53,8 @@ class DB:
         comment = {
             'user_id': ObjectId(user['_id']),
             'page_id': ObjectId(page['_id']),
-            'message': message
+            'message': message,
+            'timestamp': datetime.now()
         }
 
         return self.deserialize(self.db['comments'].insert(comment))
@@ -62,7 +63,7 @@ class DB:
         return self.deserialize(self.db['comments'].find_one({ '_id': ObjectId(commentId) }))
 
     def findCommentsByPageId(self, pageId):
-        return self.deserialize(list(self.db['comments'].find({ 'page_id': ObjectId(pageId) })))
+        return self.deserialize(list(self.db['comments'].find({ 'page_id': ObjectId(pageId) }).sort('timestamp', DESCENDING)))
 
     # Helpers
 
@@ -74,7 +75,7 @@ class JSONEncoder(json.JSONEncoder):
     def default(self, o):
         if isinstance(o, ObjectId):
             return str(o)
-        elif isinstance(o, (datetime.datetime, datetime.date)):
+        elif isinstance(o, (datetime, date)):
             return o.isoformat()
         return json.JSONEncoder.default(self, o)
 
