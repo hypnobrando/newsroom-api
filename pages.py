@@ -1,5 +1,6 @@
 import asyncio
 from sanic.response import json as json_response
+from sanic.response import html as html_response
 from sanic import Blueprint
 from page_parser.page_parser import PageParser
 
@@ -49,3 +50,15 @@ async def getPageByUrl(request):
         jsonComments.append(comment)
 
     return json_response({ 'page': page, 'comments': jsonComments }, status=200)
+
+
+#
+# GET - /pages/:page_id/html
+#
+@pages.route('/pages/<page_id>/html', methods=['GET'])
+async def getPageHTML(request, page_id):
+    page = db.findPageById(page_id)
+    if page == None:
+        return html_response(Response.NotFoundError, status=404)
+
+    return html_response(page['html'], status=200)

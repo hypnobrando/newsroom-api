@@ -52,6 +52,21 @@ class PageParser:
         if not self.loadParser():
             return None
 
+        # Get html for iframe if we need it.
+        html = None
+        r = requests.get(self.url)
+        frame_ancestors = None
+        if 'content-security-policy' in r.headers:
+            for elem in r.headers['content-security-policy'].split(';'):
+                if 'frame-ancestors' in elem:
+                    frame_ancestors = elem
+
+            if frame_ancestors:
+                html = self.parser.html
+        if 'X-Frame-Options' in r.headers:
+            html = self.parser.html
+
+
         # query for related api
         headers = { 'X-Api-Key': API_KEY }
         q = ''
@@ -102,6 +117,7 @@ class PageParser:
             'authors': self.parser.authors,
             'title': self.parser.title,
             'keywords': self.parser.keywords,
+            'html': html,
             'related': related,
             'timestamp': datetime.now()
         }
