@@ -1,7 +1,7 @@
 import asyncio
 from sanic.response import json as json_response
 from sanic import Blueprint
-from urllib.parse import urlparse
+from page_parser.page_parser import PageParser
 
 from db.db import db
 from responses.response import Response
@@ -16,15 +16,19 @@ async def getPageByUrl(request):
     if 'url' not in request.args:
         return json_response({ 'error': Response.BadRequest }, status=400)
 
-    url_parser = urlparse(request.args['url'][0])
-    website = url_parser.netloc
-    path = url_parser.path
+    page_parser = PageParser(request.args['url'][0])
+    website = page_parser.website
+    path = page_parser.path
 
     page = db.findPageByWebsiteAndPath(website, path)
 
     # Create page.
     if page == None:
-        page_id = db.insertPage(website, path)
+        parsed = page_parser.getPage()
+        if not parsed:
+            return json_response({ 'error': Response.BadRequest }, status=400)
+
+        page_id = db.insertPage(parsed)
         page = db.findPageById(page_id)
 
     # Get comments.

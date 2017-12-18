@@ -39,12 +39,7 @@ class DB:
     def findPageByWebsiteAndPath(self, website, path):
         return self.deserialize(self.db['pages'].find_one({ 'website': website, 'path': path }))
 
-    def insertPage(self, website, path):
-        page = {
-            'website': website,
-            'path': path
-        }
-
+    def insertPage(self, page):
         return self.deserialize(self.db['pages'].insert(page))
 
     # Comments

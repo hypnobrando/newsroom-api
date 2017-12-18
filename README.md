@@ -11,3 +11,8 @@
 ### deploying
 * clone [ecs-deploy](https://github.com/silinternational/ecs-deploy) into a ~/src folder
 * `bash deploy.sh testing | production`
+
+
+### TODO:
+* integrate nlp api: https://github.com/codelucas/newspaper
+* integrate news article search api: https://newsapi.org/
