@@ -5,7 +5,7 @@ import requests
 
 API_KEY = '33098d6865144874b8baa9aaaade964f'
 API_URL = 'https://newsapi.org/v2/everything'
-MAX_KEYWORDS = 6
+MAX_KEYWORDS = 10
 
 class PageParser:
     def __init__(self, url):
