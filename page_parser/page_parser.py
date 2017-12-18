@@ -81,6 +81,11 @@ class PageParser:
             if article['source']['name'] in sources:
                 continue
 
+            url_parser = urlparse(article['url'])
+            website = url_parser.netloc
+            if website == self.website:
+                continue
+
             sources.add(article['source']['name'])
 
             related.append({
