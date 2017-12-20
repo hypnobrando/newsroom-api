@@ -5,6 +5,9 @@ from users import users
 from comments import comments
 from pages import pages
 from etc import etc
+import nltk
+
+nltk.download('punkt')
 
 app = Sanic()
 app.blueprint(users)

@@ -21,7 +21,7 @@ async def postUser(request):
     if 'username' not in body or 'password' not in body:
         return json_response({ 'error': Response.BadRequest }, status=400)
 
-    user = db.findUserByUsernameAndPassword(body['username'], body['password'])
+    user = db.findByUsername(body['username'])
     if user != None:
         return json_response({ 'error': Response.BadRequest }, status=400)
 

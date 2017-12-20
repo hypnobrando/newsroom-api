@@ -15,7 +15,7 @@ pages = Blueprint('pages')
 @pages.route('/pages', methods=['GET'])
 async def getPageByUrl(request):
     if 'url' not in request.args:
-        return json_response({ 'error': Response.BadRequest }, status=400)
+        return json_response({ 'error': 'no url' }, status=400)
 
     page_parser = PageParser(request.args['url'][0])
     website = page_parser.website
@@ -27,7 +27,7 @@ async def getPageByUrl(request):
     if page == None:
         parsed = page_parser.getPage()
         if not parsed:
-            return json_response({ 'error': Response.BadRequest }, status=400)
+            return json_response({ 'error': 'Parsing did not work...' }, status=400)
 
         page_id = db.insertPage(parsed)
         page = db.findPageById(page_id)

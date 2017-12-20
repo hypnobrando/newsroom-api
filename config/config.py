@@ -4,7 +4,7 @@ class Config:
 
     def __init__(self):
         self.env = 'development' if self.isDev(self.getEnvVar('ENV')) else self.getEnvVar('ENV')
-        self.dbURI = 'mongodb://localhost:27017/' if self.isDev(self.env) else self.getEnvVar('DB_URI')
+        self.dbURI = 'mongodb://localhost:27017/' if self.isDev(self.env) else self.getEnvVar('DB_URI') # docker.for.mac. if running in docker
         self.dbName = 'newsroom'
 
     def getEnvVar(self, key):

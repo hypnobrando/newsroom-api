@@ -28,6 +28,9 @@ class DB:
     def findUsersByIds(self, userIds):
         return self.deserialize(list(self.db['users'].find({ '_id': { '$in': [ObjectId(userId) for userId in userIds] } }, { 'password': 0 })))
 
+    def findByUsername(self, username):
+        return self.deserialize(self.db['users'].find_one({ 'username': username }, { 'password': 0 }))
+
     def findUserByUsernameAndPassword(self, username, password):
         return self.deserialize(self.db['users'].find_one({ 'username': username, 'password':  password}, { 'password': 0 }))
 
