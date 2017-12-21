@@ -1,4 +1,4 @@
-# newsroom
+# newsroom-api
 
 ### check it out [here](http://newsroom.bep-projects.com)
 
