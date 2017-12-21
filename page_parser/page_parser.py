@@ -15,7 +15,7 @@ class PageParser:
             url = url[:url.index('#')]
 
         if 'http://' != url[:len('http://')] and 'https://' != url[:len('https://')]:
-            url = 'http://' + url
+            url = 'https://' + url
 
         url_parser = urlparse(url)
         self.url = url
@@ -54,6 +54,7 @@ class PageParser:
 
         # Get html for iframe if we need it.
         html = None
+
         r = requests.get(self.url)
         frame_ancestors = None
         if 'content-security-policy' in r.headers:
@@ -65,7 +66,6 @@ class PageParser:
                 html = self.parser.html
         if 'X-Frame-Options' in r.headers:
             html = self.parser.html
-
 
         # query for related api
         headers = { 'X-Api-Key': API_KEY }
@@ -89,27 +89,29 @@ class PageParser:
         resp = r.json()
 
         related = []
-        sources = set()
-        for i in range(len(resp['articles'])):
-            article = resp['articles'][i]
 
-            if article['source']['name'] in sources:
-                continue
+        if 'articles' in resp:
+            sources = set()
+            for i in range(len(resp['articles'])):
+                article = resp['articles'][i]
 
-            url_parser = urlparse(article['url'])
-            website = url_parser.netloc
-            if website == self.website:
-                continue
+                if article['source']['name'] in sources:
+                    continue
 
-            sources.add(article['source']['name'])
+                url_parser = urlparse(article['url'])
+                website = url_parser.netloc
+                if website == self.website:
+                    continue
 
-            related.append({
-                'title': article['title'],
-                'url': article['url'],
-                'website': article['source']['name'],
-                'img_url': article['urlToImage'],
-                'published_at': article['publishedAt']
-            })
+                sources.add(article['source']['name'])
+
+                related.append({
+                    'title': article['title'],
+                    'url': article['url'],
+                    'website': article['source']['name'],
+                    'img_url': article['urlToImage'],
+                    'published_at': article['publishedAt']
+                })
 
         return {
             'website': self.website,
