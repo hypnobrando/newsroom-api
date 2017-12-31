@@ -62,6 +62,7 @@ SRC_IMGS = {
     'www.newscientist.com': 'https://allisjustadream.files.wordpress.com/2013/07/newscientist_logo_rgb.jpg',
     'news.vice.com': 'https://upload-assets.vice.com/files/2016/02/26/1456516814vice_logo.png',
     'motherboard.vice.com': 'https://upload-assets.vice.com/files/2016/02/26/1456516814vice_logo.png',
+    'broadly.vice.com': 'https://upload-assets.vice.com/files/2016/02/26/1456516814vice_logo.png',
     'fortune.com': 'https://logos-download.com/wp-content/uploads/2016/05/Fortune_logo_wordmark.png',
     'www.economist.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/TheEconomistLogo.svg/500px-TheEconomistLogo.svg.png',
     'www.gamespot.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Logo_of_GameSpot.svg/2000px-Logo_of_GameSpot.svg.png',
@@ -71,7 +72,14 @@ SRC_IMGS = {
     'www.nature.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Nature_journal_logo.svg/1280px-Nature_journal_logo.svg.png',
     'www.nextbigfuture.com': 'http://www.dotznano.com/wp-content/uploads/2017/05/NextBigFuture.png',
     'www.ccn.com': 'http://www.cryptocoinstockexchange.com/wp-content/uploads/2017/08/cryptocoinsnews-vector-kopi-1-1.png',
-    'www.techradar.com': 'http://deepfreeze.altervista.org/img/j_logos/logo_techradar.png'
+    'www.techradar.com': 'http://deepfreeze.altervista.org/img/j_logos/logo_techradar.png',
+    'chrome.google.com': 'https://youdontneedacrm.com/images/chromeWebStore-nocrm.svg',
+    'www.facebook.com': 'http://cdn.australianmarriageequality.org/wp-content/uploads/2015/11/facebook-logo-long.png',
+    'twitter.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Twitter_logo.svg/2000px-Twitter_logo.svg.png',
+    'www.instagram.com': 'https://designcontest-com-designcontest.netdna-ssl.com/blog/wp-content/uploads/2017/06/new-instagram-text-logo.png',
+    'www.youtube.com': 'https://www.youtube.com/yt/about/media/images/brand-resources/logos/YouTube-logo-full_color_light.svg',
+    'www.google.com': 'https://www.festisite.com/static/partylogo/img/logos/google.png',
+    'www.yahoo.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Yahoo%21_logo.svg/2000px-Yahoo%21_logo.svg.png'
 }
 
 class NewsSources:
