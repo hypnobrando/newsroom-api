@@ -1,6 +1,6 @@
 # newsroom-api
 
-Newsroom is available on the Chrome Store [here](https://chrome.google.com/webstore/detail/newsroom/lkokbemmcgfgdlablbafpikiicpjiejj)
+available on the Chrome Store [here](https://chrome.google.com/webstore/detail/newsroom/lkokbemmcgfgdlablbafpikiicpjiejj)
 
 ### run locally
 * run a mongo database named `newsroom`
