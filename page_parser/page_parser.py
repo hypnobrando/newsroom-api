@@ -7,12 +7,20 @@ API_KEY = '33098d6865144874b8baa9aaaade964f'
 API_URL = 'https://newsapi.org/v2/everything'
 MAX_KEYWORDS = 10
 
+SOURCES_ALL = ['abc-news', 'abc-news-au', 'aftenposten', 'al-jazeera-english', 'ansa', 'argaam', 'ars-technica', 'ary-news', 'associated-press', 'australian-financial-review', 'axios', 'bbc-news', 'bbc-sport', 'bild', 'blasting-news-br', 'bleacher-report', 'bloomberg', 'breitbart-news', 'business-insider', 'business-insider-uk', 'buzzfeed', 'cbc-news', 'cbs-news', 'cnbc', 'cnn', 'cnn-es', 'crypto-coins-news', 'daily-mail', 'der-tagesspiegel', 'die-zeit', 'el-mundo', 'engadget', 'entertainment-weekly', 'espn', 'espn-cric-info', 'financial-post', 'financial-times', 'focus', 'football-italia', 'fortune', 'four-four-two', 'fox-news', 'fox-sports', 'globo', 'google-news', 'google-news-ar', 'google-news-au', 'google-news-br', 'google-news-ca', 'google-news-fr', 'google-news-in', 'google-news-is', 'google-news-it', 'google-news-ru', 'google-news-sa', 'google-news-uk', 'goteborgs-posten', 'gruenderszene', 'hacker-news', 'handelsblatt', 'ign', 'il-sole-24-ore', 'independent', 'infobae', 'info-money', 'la-gaceta', 'la-nacion', 'la-repubblica', 'le-monde', 'lenta', 'lequipe', 'les-echos', 'liberation', 'marca', 'mashable', 'medical-news-today', 'metro', 'mirror', 'msnbc', 'mtv-news', 'mtv-news-uk', 'national-geographic', 'nbc-news', 'news24', 'new-scientist', 'news-com-au', 'newsweek', 'new-york-magazine', 'next-big-future', 'nfl-news', 'nhl-news', 'nrk', 'politico', 'polygon', 'rbc', 'recode', 'reddit-r-all', 'reuters', 'rt', 'rte', 'rtl-nieuws', 'sabq', 'spiegel-online', 'svenska-dagbladet', 't3n', 'talksport', 'techcrunch', 'techcrunch-cn', 'techradar', 'the-economist', 'the-globe-and-mail', 'the-guardian-au', 'the-guardian-uk', 'the-hill', 'the-hindu', 'the-huffington-post', 'the-irish-times', 'the-lad-bible', 'the-new-york-times', 'the-next-web', 'the-sport-bible', 'the-telegraph', 'the-times-of-india', 'the-verge', 'the-wall-street-journal', 'the-washington-post', 'time', 'usa-today', 'vice-news', 'wired', 'wired-de', 'wirtschafts-woche', 'xinhua-net', 'ynet']
+
+SOURCES_FILTERED = ['abc-news', 'abc-news-au', 'associated-press', 'australian-financial-review', 'axios', 'bbc-news', 'bbc-sport', 'blasting-news-br', 'bleacher-report', 'bloomberg', 'breitbart-news', 'business-insider', 'business-insider-uk', 'buzzfeed', 'cbc-news', 'cbs-news', 'cnbc', 'cnn', 'cnn-es', 'crypto-coins-news', 'daily-mail', 'engadget', 'entertainment-weekly', 'espn', 'espn-cric-info', 'financial-post', 'financial-times', 'focus', 'football-italia', 'fortune', 'four-four-two', 'fox-news', 'fox-sports', 'hacker-news', 'ign', 'independent', 'info-money', 'la-nacion', 'la-repubblica', 'le-monde', 'lenta', 'lequipe', 'les-echos', 'liberation', 'marca', 'mashable', 'medical-news-today', 'metro', 'mirror', 'msnbc', 'mtv-news', 'mtv-news-uk', 'national-geographic', 'nbc-news', 'new-scientist', 'news-com-au', 'newsweek', 'new-york-magazine', 'next-big-future', 'nfl-news', 'nhl-news', 'nrk', 'politico', 'polygon', 'rbc', 'recode', 'reuters', 't3n', 'talksport', 'techcrunch', 'techcrunch-cn', 'techradar', 'the-economist', 'the-globe-and-mail', 'the-guardian-au', 'the-guardian-uk', 'the-hill', 'the-huffington-post', 'the-irish-times', 'the-lad-bible', 'the-new-york-times', 'the-next-web', 'the-sport-bible', 'the-telegraph', 'the-verge', 'the-wall-street-journal', 'the-washington-post', 'time', 'usa-today', 'vice-news', 'wired', 'wired-de']
+
+SOURCE_STRING = ','.join(SOURCES_FILTERED)
+
 class PageParser:
     def __init__(self, url):
+        '''
         if '?' in url:
             url = url[:url.index('?')]
         if '#' in url:
             url = url[:url.index('#')]
+        '''
 
         if 'http://' != url[:len('http://')] and 'https://' != url[:len('https://')]:
             url = 'https://' + url
@@ -26,10 +34,8 @@ class PageParser:
 
     def cleanURL(self):
         if 'http://' == self.website[:len('http://')]:
-            self.url = self.url
             self.website = self.website[len('http://'):]
         elif 'https://' == self.website[:len('https://')]:
-            self.url = self.url
             self.website = self.website[len('https://'):]
 
         if self.website != '' and '/' == self.website[-1]:
@@ -55,6 +61,7 @@ class PageParser:
         # Get html for iframe if we need it.
         html = None
 
+        '''
         r = requests.get(self.url)
         frame_ancestors = None
         if 'content-security-policy' in r.headers:
@@ -66,6 +73,7 @@ class PageParser:
                 html = self.parser.html
         if 'X-Frame-Options' in r.headers:
             html = self.parser.html
+        '''
 
         # query for related api
         headers = { 'X-Api-Key': API_KEY }
@@ -85,7 +93,7 @@ class PageParser:
 
         q = q[:len(q)-len(SEPARATOR)]
 
-        r = requests.get(API_URL+'?'+urlencode({'q':q, 'sortBy': 'relevancy', 'language': 'en'}), headers=headers)
+        r = requests.get(API_URL+'?'+urlencode({'q':q, 'sortBy': 'relevancy', 'language': 'en', 'sources': SOURCE_STRING}), headers=headers)
         resp = r.json()
 
         related = []

@@ -2,10 +2,11 @@ import asyncio
 from sanic.response import json as json_response
 from sanic.response import html as html_response
 from sanic import Blueprint
-from page_parser.page_parser import PageParser
 
+from page_parser.page_parser import PageParser
 from db.db import db
 from responses.response import Response
+from news_sources.news_sources import NewsSources
 
 pages = Blueprint('pages')
 
@@ -31,6 +32,9 @@ async def getPageByUrl(request):
 
         page_id = db.insertPage(parsed)
         page = db.findPageById(page_id)
+
+    # Add src_img if it exists
+    page['src_img'] = NewsSources.getSrcImg(page['website'])
 
     # Get comments.
     comments = db.findCommentsByPageId(page['_id'])

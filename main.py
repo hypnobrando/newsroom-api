@@ -10,6 +10,7 @@ import nltk
 nltk.download('punkt')
 
 app = Sanic()
+app.static('/static', './static')
 app.blueprint(users)
 app.blueprint(comments)
 app.blueprint(pages)
