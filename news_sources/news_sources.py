@@ -15,6 +15,7 @@ SRC_IMGS = {
     'www.cnbc.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/CNBC_logo.svg/1200px-CNBC_logo.svg.png',
     'af.reuters.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Thomson_Reuters_logo.svg/2000px-Thomson_Reuters_logo.svg.png',
     'ca.reuters.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Thomson_Reuters_logo.svg/2000px-Thomson_Reuters_logo.svg.png',
+    'in.reuters.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Thomson_Reuters_logo.svg/2000px-Thomson_Reuters_logo.svg.png',
     'www.theguardian.com': 'http://josiahhesse.com/wp-content/uploads/2015/12/The-Guardian-logo.jpg',
     'www.espn.com': 'http://skysportsball.com/wp-content/uploads/2017/08/ESPN-Logo.png',
     'www.usatoday.com': 'https://www.gannett-cdn.com/sites/usatoday/images/site-masthead-logo-dark@2x.png',
@@ -50,7 +51,27 @@ SRC_IMGS = {
     'www.abc.net.au': 'http://www.abc.net.au/cm/lb/8212706/data/news-logo-2017---desktop-print-data.png',
     'www.wired.com': 'https://www.youi.tv/wp-content/uploads/2013/01/wired-logo.jpg',
     'www.engadget.com': 'https://logosinside.com/uploads/posts/2016-08/engadget-logo.png',
-    'www.theverge.com': 'https://www.underconsideration.com/brandnew/archives/the_verge_2016_logo.png'
+    'www.theverge.com': 'https://www.underconsideration.com/brandnew/archives/the_verge_2016_logo.png',
+    'www.latimes.com': 'https://www.filepicker.io/api/file/TRbw19AlSk6Zz6cP8rBN',
+    'www.courant.com': 'https://www.kelsercorp.com/wp-content/uploads/2016/09/Hartford-Courant-Logo.png',
+    'www.espncricinfo.com': 'http://www.sportsvideo.org/new/wp-content/uploads/2017/07/espncricinfo-logo.jpg',
+    'www.polygon.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Polygon_logo.svg/2000px-Polygon_logo.svg.png',
+    'kotaku.com': 'https://i.stack.imgur.com/Cqj2X.png',
+    'www.forbes.com': 'https://s3.amazonaws.com/freebiesupply/large/2x/forbes-logo-black-transparent.png',
+    'www.medicalnewstoday.com': 'https://image-store.slidesharecdn.com/e459a350-479b-4fff-9a2a-aa1b8f57adb3-original.png',
+    'www.newscientist.com': 'https://allisjustadream.files.wordpress.com/2013/07/newscientist_logo_rgb.jpg',
+    'news.vice.com': 'https://upload-assets.vice.com/files/2016/02/26/1456516814vice_logo.png',
+    'motherboard.vice.com': 'https://upload-assets.vice.com/files/2016/02/26/1456516814vice_logo.png',
+    'fortune.com': 'https://logos-download.com/wp-content/uploads/2016/05/Fortune_logo_wordmark.png',
+    'www.economist.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/TheEconomistLogo.svg/500px-TheEconomistLogo.svg.png',
+    'www.gamespot.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Logo_of_GameSpot.svg/2000px-Logo_of_GameSpot.svg.png',
+    'www.pcgamer.com': 'https://upload.wikimedia.org/wikipedia/commons/e/e3/PC_Gamer_old_logo.jpg',
+    'www.gameinformer.com': 'https://upload.wikimedia.org/wikipedia/commons/3/3e/Game_Informer_logo_%282010-present%29.png',
+    'news.nationalgeographic.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/National-Geographic-Logo.svg/2000px-National-Geographic-Logo.svg.png',
+    'www.nature.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Nature_journal_logo.svg/1280px-Nature_journal_logo.svg.png',
+    'www.nextbigfuture.com': 'http://www.dotznano.com/wp-content/uploads/2017/05/NextBigFuture.png',
+    'www.ccn.com': 'http://www.cryptocoinstockexchange.com/wp-content/uploads/2017/08/cryptocoinsnews-vector-kopi-1-1.png',
+    'www.techradar.com': 'http://deepfreeze.altervista.org/img/j_logos/logo_techradar.png'
 }
 
 class NewsSources:
