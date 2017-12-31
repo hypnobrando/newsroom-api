@@ -1,6 +1,6 @@
 # newsroom-api
 
-### check it out [here](http://newsroom.bep-projects.com)
+Newsroom is available on the Chrome Store [here](https://chrome.google.com/webstore/detail/newsroom/lkokbemmcgfgdlablbafpikiicpjiejj)
 
 ### run locally
 * run a mongo database named `newsroom`
