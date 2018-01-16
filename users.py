@@ -1,11 +1,16 @@
 import asyncio
 from sanic.response import json as json_response
+from sanic.response import html
 from sanic import Blueprint
+import requests
+import json
 
 from db.db import db
+from config.config import Config
 from responses.response import Response
 
 users = Blueprint('users')
+config = Config()
 
 #
 # POST - /users
@@ -29,6 +34,41 @@ async def postUser(request):
     user = db.findUserById(user_id)
 
     return json_response({ 'user': user }, status=201)
+
+@users.route('/users/facebook_login', methods=['GET'])
+async def facebookUserLogin(request):
+    if 'code' not in request.args:
+        return json_response({ 'error': Response.BadRequest }, status=400)
+
+    code = request.args['code'][0]
+
+    fbookURL = 'https://graph.facebook.com/oauth/access_token? \
+        client_id=' + config.fbClientId + \
+        '&redirect_uri=' + config.fbRedirectURI + \
+        '&client_secret=' + config.fbClientSecret + \
+        '&code=' + code
+
+    r = requests.get(fbookURL)
+    fbInfo = r.json()
+    if 'access_token' not in fbInfo:
+        return json_response({ 'error': fbInfo }, status=400)
+
+    r = requests.get("https://graph.facebook.com/me?fields=id,first_name,last_name,picture&access_token=" + fbInfo['access_token'])
+    fbUser = r.json()
+    if 'id' not in fbUser:
+        return json_response({ 'error': fbUser }, status=400)
+
+    user = db.findByFBID(fbUser['id'])
+    user_id = None
+    if user != None:
+        db.updateUser(user['_id'], { 'first_name': fbUser['first_name'], 'last_name': fbUser['last_name'], 'fb_id': fbUser['id'], 'prof_pic': fbUser['picture']['data']['url'] })
+        user_id = user['_id']
+    else:
+        user_id = db.insertUser({ 'first_name': fbUser['first_name'], 'last_name': fbUser['last_name'], 'fb_id': fbUser['id'], 'prof_pic': fbUser['picture']['data']['url'] })
+
+    user = db.findUserById(user_id)
+
+    return html('<h1 id="user" style="color:white;">' + json.dumps(user) + '</h1>')
 
 #
 # GET - /users/:user_id

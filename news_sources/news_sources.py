@@ -125,7 +125,11 @@ SRC_IMGS = {
     'paleofuture.gizmodo.com': 'http://logo-logos.com/wp-content/uploads/2016/10/Gizmodo_logo.png',
     'io9.gizmodo.com': 'http://logo-logos.com/wp-content/uploads/2016/10/Gizmodo_logo.png',
     'fieldguide.gizmodo.com': 'http://logo-logos.com/wp-content/uploads/2016/10/Gizmodo_logo.png',
-    'www.reddit.com': 'https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Reddit_logo_and_wordmark.svg/1280px-Reddit_logo_and_wordmark.svg.png'
+    'www.reddit.com': 'https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Reddit_logo_and_wordmark.svg/1280px-Reddit_logo_and_wordmark.svg.png',
+    'worldsurfleague.com': 'https://i.pinimg.com/originals/a2/56/fc/a256fc028f7e4fd79ec781e7ddafeb7b.jpg',
+    'www.vox.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Vox_logo.svg/2000px-Vox_logo.svg.png',
+    'www.rollingstone.com': 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Rolling_Stone_logo.svg',
+    'soundcloud.com': 'https://cdn.worldvectorlogo.com/logos/soundcloud.svg'
 }
 
 class NewsSources:

@@ -15,10 +15,18 @@ class DB:
     # Users
 
     def insertUser(self, user):
-        user = {
-            'username': user['username'],
-            'password': user['password']
-        }
+        if 'fb_id' in user:
+            user = {
+                'first_name': user['first_name'],
+                'last_name': user['last_name'],
+                'fb_id': user['fb_id'],
+                'prof_pic': user['prof_pic']
+            }
+        else:
+            user = {
+                'username': user['username'],
+                'password': user['password']
+            }
 
         return self.deserialize(self.db['users'].insert(user))
 
@@ -33,6 +41,12 @@ class DB:
 
     def findUserByUsernameAndPassword(self, username, password):
         return self.deserialize(self.db['users'].find_one({ 'username': username, 'password':  password}, { 'password': 0 }))
+
+    def findByFBID(self, fbID):
+        return self.deserialize(self.db['users'].find_one({ 'fb_id': fbID }, { 'password': 0 }))
+
+    def updateUser(self, id, fields):
+        self.db['users'].update({'_id': ObjectId(id)}, {'$set' : fields })
 
     # Pages
 
