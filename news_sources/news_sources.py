@@ -63,6 +63,7 @@ SRC_IMGS = {
     'news.vice.com': 'https://upload-assets.vice.com/files/2016/02/26/1456516814vice_logo.png',
     'motherboard.vice.com': 'https://upload-assets.vice.com/files/2016/02/26/1456516814vice_logo.png',
     'broadly.vice.com': 'https://upload-assets.vice.com/files/2016/02/26/1456516814vice_logo.png',
+    'noisey.vice.com': 'https://upload-assets.vice.com/files/2016/02/26/1456516814vice_logo.png',
     'fortune.com': 'https://logos-download.com/wp-content/uploads/2016/05/Fortune_logo_wordmark.png',
     'www.economist.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/TheEconomistLogo.svg/500px-TheEconomistLogo.svg.png',
     'www.gamespot.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Logo_of_GameSpot.svg/2000px-Logo_of_GameSpot.svg.png',
@@ -129,7 +130,8 @@ SRC_IMGS = {
     'worldsurfleague.com': 'https://i.pinimg.com/originals/a2/56/fc/a256fc028f7e4fd79ec781e7ddafeb7b.jpg',
     'www.vox.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Vox_logo.svg/2000px-Vox_logo.svg.png',
     'www.rollingstone.com': 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Rolling_Stone_logo.svg',
-    'soundcloud.com': 'https://cdn.worldvectorlogo.com/logos/soundcloud.svg'
+    'soundcloud.com': 'https://cdn.worldvectorlogo.com/logos/soundcloud.svg',
+    'www.amazon.com': 'http://media.corporate-ir.net/media_files/IROL/17/176060/img/logos/amazon_logo_RGB.jpg'
 }
 
 class NewsSources:

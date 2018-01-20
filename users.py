@@ -1,6 +1,6 @@
 import asyncio
 from sanic.response import json as json_response
-from sanic.response import html
+from sanic.response import html, raw
 from sanic import Blueprint
 import requests
 import json
@@ -51,12 +51,12 @@ async def facebookUserLogin(request):
     r = requests.get(fbookURL)
     fbInfo = r.json()
     if 'access_token' not in fbInfo:
-        return json_response({ 'error': fbInfo }, status=400)
+        return html('<h2 style="color:white;">' + json.dumps({ 'error': fbInfo }) + '</h2>')
 
     r = requests.get("https://graph.facebook.com/me?fields=id,first_name,last_name,picture&access_token=" + fbInfo['access_token'])
     fbUser = r.json()
     if 'id' not in fbUser:
-        return json_response({ 'error': fbUser }, status=400)
+        return html('<h2 style="color:white;">' + json.dumps({ 'error': fbUser }) + '</h2>')
 
     user = db.findByFBID(fbUser['id'])
     user_id = None
@@ -67,8 +67,9 @@ async def facebookUserLogin(request):
         user_id = db.insertUser({ 'first_name': fbUser['first_name'], 'last_name': fbUser['last_name'], 'fb_id': fbUser['id'], 'prof_pic': fbUser['picture']['data']['url'] })
 
     user = db.findUserById(user_id)
+    resp = '<h1 id="user" style="color:white;">' + json.dumps(user) + '</h1>'
 
-    return html('<h1 id="user" style="color:white;">' + json.dumps(user) + '</h1>')
+    return html(resp)
 
 #
 # GET - /users/:user_id
