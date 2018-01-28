@@ -11,6 +11,8 @@ class Config:
         self.fbClientSecret = self.getEnvVar('FB_CLIENT_SECRET') if self.isProd() else 'fec2bf57efdb838b1b1f4209552557b6'
         self.fbRedirectURI =  ('https://api.newsroom.bep-projects.com' if self.isProd() else 'http://localhost:8080') + '/users/facebook_login'
 
+        self.newsAPIKey = '33098d6865144874b8baa9aaaade964f'
+
     def getEnvVar(self, key):
         if key in os.environ:
             return os.environ[key]

@@ -1,140 +1,105 @@
-SRC_IMGS = {
-    'www.cbsnews.com': 'http://ssrs.com/wp-content/uploads/2017/02/CBS_News_logo.png',
-    'thehill.com': 'https://hultgren.house.gov/sites/hultgren.house.gov/files/wysiwyg_uploaded/The%20Hill%20Logo.jpg',
-    'time.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Time_Magazine_logo.svg/2000px-Time_Magazine_logo.svg.png',
-    'www.dailymail.co.uk': 'http://www.findersinternational.co.uk/wp-content/uploads/2015/12/daily-mail-logo.png',
-    'www.breitbart.com': 'http://www.breitbart.com/t/assets/i/BB-logo-highres.jpg',
-    'www.telegraph.co.uk': 'https://media.egorealestate.com/ORIGINAL/a996/5411870d-7173-4e1f-98d2-a150f302a996.png',
-    'www.ft.com': 'https://www.nhh.no/globalassets/bibliotek/ft-logo.jpg?width=600&height=210&quality=90&anchor=topleft',
-    'www.nytimes.com': 'https://www.nytco.com/wp-content/themes/nytco/images/nytco/NYT-wordmark.png',
-    'www.washingtonpost.com': 'http://logodatabases.com/wp-content/uploads/2012/05/washington-post-logo.jpg',
-    'www.foxnews.com': 'https://www.conservativedailynews.com/wp-content/uploads/2017/04/foxnews-logo-8.jpg',
-    'www.cnn.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/CNN.svg/1280px-CNN.svg.png',
-    'money.cnn.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b1/CNN.svg/1280px-CNN.svg.png',
-    'www.irishtimes.com': 'http://smurfitschoolblog.com/wp-content/uploads/2016/01/irish-times.jpg',
-    'www.cnbc.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e3/CNBC_logo.svg/1200px-CNBC_logo.svg.png',
-    'af.reuters.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Thomson_Reuters_logo.svg/2000px-Thomson_Reuters_logo.svg.png',
-    'ca.reuters.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Thomson_Reuters_logo.svg/2000px-Thomson_Reuters_logo.svg.png',
-    'in.reuters.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Thomson_Reuters_logo.svg/2000px-Thomson_Reuters_logo.svg.png',
-    'www.theguardian.com': 'http://josiahhesse.com/wp-content/uploads/2015/12/The-Guardian-logo.jpg',
-    'www.espn.com': 'http://skysportsball.com/wp-content/uploads/2017/08/ESPN-Logo.png',
-    'www.usatoday.com': 'https://www.gannett-cdn.com/sites/usatoday/images/site-masthead-logo-dark@2x.png',
-    'www.businessinsider.com': 'http://static6.businessinsider.com/image/597a0333b50ab127008b4b0a-2400/bilightbackgroundcolorhorizontal.png',
-    'uk.businessinsider.com': 'http://static6.businessinsider.com/image/597a0333b50ab127008b4b0a-2400/bilightbackgroundcolorhorizontal.png',
-    'nymag.com': 'http://www.drlaurajana.com/wp-content/uploads/2017/01/new-york-mag.jpg',
-    'www.wsj.com': 'http://www.avascent.com/wp-content/uploads/2016/12/the-wall-street-journal-logo.jpg',
-    'abcnews.go.com': 'https://upload.wikimedia.org/wikipedia/en/f/fa/ABCNewsLogo.png',
-    'www.nfl.com': 'https://cdn.bleacherreport.net/images/team_logos/328x328/nfl.png',
-    'www.nbcnews.com': 'https://www.doctoral.graphene.cam.ac.uk/news-and-highlights/news-images/nbc-news-logo.jpg',
-    'www.foxsports.com': 'https://foxsports-wordpress-www-prsupports-prod.s3.amazonaws.com/uploads/sites/2/2016/12/FSLogo_1040x585.jpg',
-    'mashable.com': 'http://diylogodesigns.com/blog/wp-content/uploads/2016/07/Mashable-Logo-PNG-Transparent.png',
-    'www.politico.com': 'https://haystax.com/wp-content/uploads/2017/04/Politico-Logo.jpg',
-    'www.buzzfeed.com': 'http://www.drpimplepopper.com/wp-content/uploads/2016/04/Social-Media-Marketing-Site-List-Buzzfeed-Logo-Image.jpg',
-    'www.news24.com': 'http://customercarephonenumbers.in/wp-content/uploads/2016/06/news-24-logo-article.jpg',
-    'www.nba.com': 'https://www.underconsideration.com/brandnew/archives/nba_logo_wordmark.png',
-    'bleacherreport.com': 'http://vignette3.wikia.nocookie.net/logopedia/images/e/ec/Bleacher_Report_Logo.svg/revision/latest?cb=20140329001557',
-    'www.bbc.com': 'https://vignette1.wikia.nocookie.net/logopedia/images/2/23/BBC_News_1997_logo.png/revision/latest?cb=20120315193314',
-    'www.bbc.co.uk': 'https://vignette1.wikia.nocookie.net/logopedia/images/2/23/BBC_News_1997_logo.png/revision/latest?cb=20120315193314',
-    'techcrunch.com': 'https://tctechcrunch2011.files.wordpress.com/2011/11/tc-techcrunch.png',
-    'thenextweb.com': 'https://www.underconsideration.com/brandnew/archives/the_next_web_logo.jpg',
-    'www.mirror.co.uk': 'http://www.pressgazette.co.uk/wp-content/uploads/2017/01/Mirror-logo-CHANGED-e1484322983573.jpg',
-    'www.marca.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/16/Marca.svg/2000px-Marca.svg.png',
-    'www.newsweek.com': 'https://upload.wikimedia.org/wikipedia/commons/d/db/Newsweek_Logo.svg',
-    'www.theglobeandmail.com': 'https://www.sleepphones.com/sites/default/files/globe%20and%20mail.jpg',
-    'www.bloomberg.com': 'http://1000logos.net/wp-content/uploads/2017/08/Bloomberg-Logo.png',
-    'ew.com': 'https://www.timeinc.com/wp-content/uploads/2014/03/ew_logo1.svg',
-    'www.ign.com': 'https://www.everplans.com/sites/default/files/styles/article_header_image/public/ign-750.jpg?itok=tOAF71M9',
-    'www.mtv.com': 'http://starcasm.net/wp-content/uploads/2013/08/MTV_News_logo_.jpg',
-    'www.independent.co.uk': 'https://static.independent.co.uk/static-assets/brand-logo.png',
-    'www.dailywire.com': 'https://d15mj6e6qmt1na.cloudfront.net/i/25896664/1500x375/c',
-    'www.huffingtonpost.com': 'http://www.brandchannel.com/wp-content/uploads/2017/05/huffpost-new-logo-2017.jpg',
-    'www.abc.net.au': 'http://www.abc.net.au/cm/lb/8212706/data/news-logo-2017---desktop-print-data.png',
-    'www.wired.com': 'https://www.youi.tv/wp-content/uploads/2013/01/wired-logo.jpg',
-    'www.engadget.com': 'https://logosinside.com/uploads/posts/2016-08/engadget-logo.png',
-    'www.theverge.com': 'https://www.underconsideration.com/brandnew/archives/the_verge_2016_logo.png',
-    'www.latimes.com': 'https://www.filepicker.io/api/file/TRbw19AlSk6Zz6cP8rBN',
-    'www.courant.com': 'https://www.kelsercorp.com/wp-content/uploads/2016/09/Hartford-Courant-Logo.png',
-    'www.espncricinfo.com': 'http://www.sportsvideo.org/new/wp-content/uploads/2017/07/espncricinfo-logo.jpg',
-    'www.polygon.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Polygon_logo.svg/2000px-Polygon_logo.svg.png',
-    'kotaku.com': 'https://i.stack.imgur.com/Cqj2X.png',
-    'www.forbes.com': 'https://s3.amazonaws.com/freebiesupply/large/2x/forbes-logo-black-transparent.png',
-    'www.medicalnewstoday.com': 'https://image-store.slidesharecdn.com/e459a350-479b-4fff-9a2a-aa1b8f57adb3-original.png',
-    'www.newscientist.com': 'https://allisjustadream.files.wordpress.com/2013/07/newscientist_logo_rgb.jpg',
-    'news.vice.com': 'https://upload-assets.vice.com/files/2016/02/26/1456516814vice_logo.png',
-    'motherboard.vice.com': 'https://upload-assets.vice.com/files/2016/02/26/1456516814vice_logo.png',
-    'broadly.vice.com': 'https://upload-assets.vice.com/files/2016/02/26/1456516814vice_logo.png',
-    'noisey.vice.com': 'https://upload-assets.vice.com/files/2016/02/26/1456516814vice_logo.png',
-    'fortune.com': 'https://logos-download.com/wp-content/uploads/2016/05/Fortune_logo_wordmark.png',
-    'www.economist.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/ba/TheEconomistLogo.svg/500px-TheEconomistLogo.svg.png',
-    'www.gamespot.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Logo_of_GameSpot.svg/2000px-Logo_of_GameSpot.svg.png',
-    'www.pcgamer.com': 'https://upload.wikimedia.org/wikipedia/commons/e/e3/PC_Gamer_old_logo.jpg',
-    'www.gameinformer.com': 'https://upload.wikimedia.org/wikipedia/commons/3/3e/Game_Informer_logo_%282010-present%29.png',
-    'news.nationalgeographic.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6a/National-Geographic-Logo.svg/2000px-National-Geographic-Logo.svg.png',
-    'www.nature.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Nature_journal_logo.svg/1280px-Nature_journal_logo.svg.png',
-    'www.nextbigfuture.com': 'http://www.dotznano.com/wp-content/uploads/2017/05/NextBigFuture.png',
-    'www.ccn.com': 'http://www.cryptocoinstockexchange.com/wp-content/uploads/2017/08/cryptocoinsnews-vector-kopi-1-1.png',
-    'www.techradar.com': 'http://deepfreeze.altervista.org/img/j_logos/logo_techradar.png',
-    'chrome.google.com': 'https://youdontneedacrm.com/images/chromeWebStore-nocrm.svg',
-    'www.facebook.com': 'http://cdn.australianmarriageequality.org/wp-content/uploads/2015/11/facebook-logo-long.png',
-    'newsroom.fb.com': 'http://cdn.australianmarriageequality.org/wp-content/uploads/2015/11/facebook-logo-long.png',
-    'twitter.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Twitter_logo.svg/2000px-Twitter_logo.svg.png',
-    'www.instagram.com': 'https://designcontest-com-designcontest.netdna-ssl.com/blog/wp-content/uploads/2017/06/new-instagram-text-logo.png',
-    'www.youtube.com': 'https://www.youtube.com/yt/about/media/images/brand-resources/logos/YouTube-logo-full_color_light.svg',
-    'www.google.com': 'https://www.festisite.com/static/partylogo/img/logos/google.png',
-    'www.yahoo.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Yahoo%21_logo.svg/2000px-Yahoo%21_logo.svg.png',
-    'sports.yahoo.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Yahoo%21_logo.svg/2000px-Yahoo%21_logo.svg.png',
-    'finance.yahoo.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Yahoo%21_logo.svg/2000px-Yahoo%21_logo.svg.png',
-    'answers.yahoo.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Yahoo%21_logo.svg/2000px-Yahoo%21_logo.svg.png',
-    'github.com': 'https://19386-presscdn-pagely.netdna-ssl.com/wp-content/uploads/2017/10/github-logo-1.png',
-    'www.linkedin.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/LinkedIn_Logo.svg/2000px-LinkedIn_Logo.svg.png',
-    'www.apnews.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Associated_Press_logo.svg/2000px-Associated_Press_logo.svg.png',
-    'www.afr.com': 'https://www.compareforexbrokers.com.au/wp-content/uploads/2015/07/AFR-logo-Learn-forex-trading-with-sound-knowledge.jpg',
-    'www.axios.com': 'https://www.axios.com/static/img/whitelabel/axios/large-logo.png',
-    'www.msnbc.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/01/MSNBC_2008_logo.svg/2000px-MSNBC_2008_logo.svg.png',
-    'www.fourfourtwo.com': 'http://www.buzanszkykupa.hu/upload/staticpage/24/fourfourtwo-logo.jpg',
-    'www.liberationnews.org': 'https://www.liberationnews.org/assets/www2/images/61079.gif',
-    'www.recode.net': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/5a/Recode_logo_2016.svg/2000px-Recode_logo_2016.svg.png',
-    'talksport.com': 'http://cdn2.talksport.com/tscdn/talksport/brand/talkSPORT.png',
-    'www.ladbible.com': 'http://www.fasttrack.co.uk/wp-content/uploads/the-lad-bible.png',
-    'www.sportbible.com': 'https://www.polestardigital.com/wp-content/uploads/2016/01/pole-star-digital-the-sport-bible-client-logo.png',
-    'www.chicagotribune.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/b/b6/Chicago_Tribune_logo.svg/2000px-Chicago_Tribune_logo.svg.png',
-    'nypost.com': 'https://s3.amazonaws.com/freebiesupply/large/2x/ny-post-logo-transparent.png',
-    'www.sfgate.com': 'https://www.oncruises.com/wp-content/uploads/2016/12/sfgate-logo.png',
-    'www.npr.org': 'https://www.npr.org/about/images/press/Logos/NPRLogo_RGB.png',
-    'weather.com': 'https://localtvkdvr.files.wordpress.com/2014/01/weather-channel.jpg?quality=85&strip=all&w=500',
-    'www.nydailynews.com': 'https://i.pinimg.com/originals/f0/6b/16/f06b164f564f00104a41727cc0cb69a6.png',
-    'www.cbc.ca': 'https://upload.wikimedia.org/wikipedia/en/archive/c/c8/20091026031650%21CBC_News_Network.svg',
-    'www.dailynews.com': 'http://extras.mnginteractive.com/live/media/site200/2011/0211/20110211_032331_do11-daily-news-flag-horizontal.jpg',
-    'www.denverpost.com': 'https://vignette4.wikia.nocookie.net/logopedia/images/4/48/Denver-Post-logo.jpg/revision/latest?cb=20130504225120',
-    'www.theonion.com': 'https://fthmb.tqn.com/g6QxWI4GWet9HeUT4NEqTIJ7B_g=/3325x664/filters:fill(auto,1)/The-Onion-581247455f9b58564cb87f03.jpg',
-    'politics.theonion.com': 'https://fthmb.tqn.com/g6QxWI4GWet9HeUT4NEqTIJ7B_g=/3325x664/filters:fill(auto,1)/The-Onion-581247455f9b58564cb87f03.jpg',
-    'entertainment.theonion.com': 'https://fthmb.tqn.com/g6QxWI4GWet9HeUT4NEqTIJ7B_g=/3325x664/filters:fill(auto,1)/The-Onion-581247455f9b58564cb87f03.jpg',
-    'sports.theonion.com': 'https://fthmb.tqn.com/g6QxWI4GWet9HeUT4NEqTIJ7B_g=/3325x664/filters:fill(auto,1)/The-Onion-581247455f9b58564cb87f03.jpg',
-    'local.theonion.com': 'https://fthmb.tqn.com/g6QxWI4GWet9HeUT4NEqTIJ7B_g=/3325x664/filters:fill(auto,1)/The-Onion-581247455f9b58564cb87f03.jpg',
-    'www.clickhole.com': 'http://cdn.foliomag.com/files/images/ClickHole_logo.png',
-    'www.washingtontimes.com': 'https://johnjayrec.nyc/wp-content/uploads/2016/09/logo_washingtontimes.jpg',
-    'www.bostonglobe.com': 'http://www.picnicdurham.com/wp-content/uploads/2016/01/the-boston-globe.jpg',
-    'observer.com': 'http://www.newyorkrep.org/wp-content/uploads/2016/02/observer-logo.png',
-    'www.sbnation.com': 'https://cdn0.vox-cdn.com/uploads/chorus_asset/file/2404532/logo-sbnation.0.png',
-    'www.nbcsports.com': 'http://www.nbcsports.com/bayarea/sites/csnbayarea/files/2017/03/29/nbcs_stacked_fc_pos.png',
-    'www.si.com': 'http://logo-logos.com/wp-content/uploads/2016/11/Sports_Illustrated_logo_blue.png',
-    'www.cbssports.com': 'https://pmcdeadline2.files.wordpress.com/2016/01/cbssports_new-e1452628675678.jpg',
-    'www.cnet.com': 'https://www.winkapp.com/assets/press/press-cnet-42977f09aa2d39a2a45f9a4ab30155b5.svg',
-    'arstechnica.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/Ars_Technica_logo_%282016%29.svg/1280px-Ars_Technica_logo_%282016%29.svg.png',
-    'gizmodo.com': 'http://logo-logos.com/wp-content/uploads/2016/10/Gizmodo_logo.png',
-    'sploid.gizmodo.com': 'http://logo-logos.com/wp-content/uploads/2016/10/Gizmodo_logo.png',
-    'paleofuture.gizmodo.com': 'http://logo-logos.com/wp-content/uploads/2016/10/Gizmodo_logo.png',
-    'io9.gizmodo.com': 'http://logo-logos.com/wp-content/uploads/2016/10/Gizmodo_logo.png',
-    'fieldguide.gizmodo.com': 'http://logo-logos.com/wp-content/uploads/2016/10/Gizmodo_logo.png',
-    'www.reddit.com': 'https://upload.wikimedia.org/wikipedia/en/thumb/8/82/Reddit_logo_and_wordmark.svg/1280px-Reddit_logo_and_wordmark.svg.png',
-    'worldsurfleague.com': 'https://i.pinimg.com/originals/a2/56/fc/a256fc028f7e4fd79ec781e7ddafeb7b.jpg',
-    'www.vox.com': 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Vox_logo.svg/2000px-Vox_logo.svg.png',
-    'www.rollingstone.com': 'https://upload.wikimedia.org/wikipedia/commons/a/a9/Rolling_Stone_logo.svg',
-    'soundcloud.com': 'https://cdn.worldvectorlogo.com/logos/soundcloud.svg',
-    'www.amazon.com': 'http://media.corporate-ir.net/media_files/IROL/17/176060/img/logos/amazon_logo_RGB.jpg'
-}
+import requests
+from urllib.parse import urlparse, urlencode
+
+from config.config import Config
+from .src_imgs import SRC_IMGS
+
+API_URL_EVERYTHING = 'https://newsapi.org/v2/everything'
+API_URL_HEADLINES = 'https://newsapi.org/v2/top-headlines'
+
+MAX_KEYWORDS = 10
+
+SOURCES_ALL = ['abc-news', 'abc-news-au', 'aftenposten', 'al-jazeera-english', 'ansa', 'argaam', 'ars-technica', 'ary-news', 'associated-press', 'australian-financial-review', 'axios', 'bbc-news', 'bbc-sport', 'bild', 'blasting-news-br', 'bleacher-report', 'bloomberg', 'breitbart-news', 'business-insider', 'business-insider-uk', 'buzzfeed', 'cbc-news', 'cbs-news', 'cnbc', 'cnn', 'cnn-es', 'crypto-coins-news', 'daily-mail', 'der-tagesspiegel', 'die-zeit', 'el-mundo', 'engadget', 'entertainment-weekly', 'espn', 'espn-cric-info', 'financial-post', 'financial-times', 'focus', 'football-italia', 'fortune', 'four-four-two', 'fox-news', 'fox-sports', 'globo', 'google-news', 'google-news-ar', 'google-news-au', 'google-news-br', 'google-news-ca', 'google-news-fr', 'google-news-in', 'google-news-is', 'google-news-it', 'google-news-ru', 'google-news-sa', 'google-news-uk', 'goteborgs-posten', 'gruenderszene', 'hacker-news', 'handelsblatt', 'ign', 'il-sole-24-ore', 'independent', 'infobae', 'info-money', 'la-gaceta', 'la-nacion', 'la-repubblica', 'le-monde', 'lenta', 'lequipe', 'les-echos', 'liberation', 'marca', 'mashable', 'medical-news-today', 'metro', 'mirror', 'msnbc', 'mtv-news', 'mtv-news-uk', 'national-geographic', 'nbc-news', 'news24', 'new-scientist', 'news-com-au', 'newsweek', 'new-york-magazine', 'next-big-future', 'nfl-news', 'nhl-news', 'nrk', 'politico', 'polygon', 'rbc', 'recode', 'reddit-r-all', 'reuters', 'rt', 'rte', 'rtl-nieuws', 'sabq', 'spiegel-online', 'svenska-dagbladet', 't3n', 'talksport', 'techcrunch', 'techcrunch-cn', 'techradar', 'the-economist', 'the-globe-and-mail', 'the-guardian-au', 'the-guardian-uk', 'the-hill', 'the-hindu', 'the-huffington-post', 'the-irish-times', 'the-lad-bible', 'the-new-york-times', 'the-next-web', 'the-sport-bible', 'the-telegraph', 'the-times-of-india', 'the-verge', 'the-wall-street-journal', 'the-washington-post', 'time', 'usa-today', 'vice-news', 'wired', 'wired-de', 'wirtschafts-woche', 'xinhua-net', 'ynet']
+
+SOURCES_FILTERED = ['abc-news', 'abc-news-au', 'associated-press', 'australian-financial-review', 'axios', 'bbc-news', 'bbc-sport', 'bleacher-report', 'bloomberg', 'breitbart-news', 'business-insider', 'business-insider-uk', 'buzzfeed', 'cbc-news', 'cbs-news', 'cnbc', 'cnn', 'cnn-es', 'crypto-coins-news', 'daily-mail', 'engadget', 'entertainment-weekly', 'espn', 'espn-cric-info', 'financial-post', 'financial-times', 'focus', 'fortune', 'four-four-two', 'fox-news', 'fox-sports', 'hacker-news', 'ign', 'independent', 'liberation', 'marca', 'mashable', 'medical-news-today', 'metro', 'mirror', 'msnbc', 'mtv-news', 'mtv-news-uk', 'national-geographic', 'nbc-news', 'new-scientist', 'news-com-au', 'newsweek', 'new-york-magazine', 'next-big-future', 'nfl-news', 'nhl-news', 'politico', 'polygon', 'rbc', 'recode', 'reuters', 'talksport', 'techcrunch', 'techcrunch-cn', 'techradar', 'the-economist', 'the-globe-and-mail', 'the-guardian-au', 'the-guardian-uk', 'the-hill', 'the-huffington-post', 'the-irish-times', 'the-lad-bible', 'the-new-york-times', 'the-next-web', 'the-sport-bible', 'the-telegraph', 'the-verge', 'the-wall-street-journal', 'the-washington-post', 'time', 'usa-today', 'vice-news', 'wired', 'wired-de']
+
+SOURCE_STRING = ','.join(SOURCES_FILTERED)
+
+TOP_SOURCES = ['abc-news', 'bbc-news', 'bloomberg', 'cbc-news', 'cbs-news', 'cnbc', 'cnn', 'cnn-es', 'daily-mail', 'fox-news', 'ign', 'msnbc', 'national-geographic', 'nbc-news', 'politico', 'reuters', 'techcrunch', 'the-economist', 'the-huffington-post', 'the-new-york-times', 'the-wall-street-journal', 'the-washington-post', 'time', 'usa-today']
+
+TOP_SOURCE_STRING = ','.join(TOP_SOURCES)
 
 class NewsSources:
+    def __init__(self):
+        self.config = Config()
+
+    def getRelated(self, keywords, site):
+        headers = { 'X-Api-Key': self.config.newsAPIKey }
+        q = ''
+        nKeywordsToUse = MAX_KEYWORDS if len(keywords) >= MAX_KEYWORDS else len(keywords)
+        nKeyWords = 0
+        iterator = 0
+        SEPARATOR = ' OR '
+        while iterator < len(keywords) and nKeyWords < MAX_KEYWORDS:
+            iterator+=1
+            keyword = keywords[nKeyWords]
+            if len(keyword) < 3:
+                continue
+
+            q += keyword + SEPARATOR
+            nKeyWords+=1
+
+        q = q[:len(q)-len(SEPARATOR)]
+
+        r = requests.get(API_URL_EVERYTHING+'?'+urlencode({'q':q, 'sortBy': 'relevancy', 'language': 'en', 'sources': SOURCE_STRING}), headers=headers)
+        resp = r.json()
+
+        related = []
+
+        if 'articles' in resp:
+            sources = set()
+            for i in range(len(resp['articles'])):
+                article = resp['articles'][i]
+
+                if article['source']['name'] in sources:
+                    continue
+
+                url_parser = urlparse(article['url'])
+                website = url_parser.netloc
+                if website == site:
+                    continue
+
+                sources.add(article['source']['name'])
+
+                related.append({
+                    'title': article['title'],
+                    'url': article['url'],
+                    'website': article['source']['name'],
+                    'img_url': article['urlToImage'],
+                    'published_at': article['publishedAt']
+                })
+
+        return related
+
+    def getHeadlines(self):
+        headers = { 'X-Api-Key': self.config.newsAPIKey }
+        r = requests.get(API_URL_HEADLINES + '?'+urlencode({'sources': TOP_SOURCE_STRING, 'pageSize': 100}), headers=headers)
+        resp = r.json()
+
+        headlines = []
+        if 'articles' in resp:
+            sources = set()
+            for i in range(len(resp['articles'])):
+                if len(sources) == 3:
+                    break
+
+                article = resp['articles'][i]
+
+                if article['source']['name'] in sources:
+                    continue
+
+                sources.add(article['source']['name'])
+
+                headlines.append({
+                    'title': article['title'],
+                    'url': article['url'],
+                    'website': article['source']['name'],
+                    'img_url': article['urlToImage'],
+                    'published_at': article['publishedAt']
+                })
+
+        return headlines
+
     def getSrcImg(host):
         if host not in SRC_IMGS:
             return None
