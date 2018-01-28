@@ -60,6 +60,7 @@ async def facebookUserLogin(request):
 
     user = db.findByFBID(fbUser['id'])
     user_id = None
+    new_user = user == None
     if user != None:
         db.updateUser(user['_id'], { 'first_name': fbUser['first_name'], 'last_name': fbUser['last_name'], 'fb_id': fbUser['id'], 'prof_pic': fbUser['picture']['data']['url'] })
         user_id = user['_id']
@@ -67,6 +68,7 @@ async def facebookUserLogin(request):
         user_id = db.insertUser({ 'first_name': fbUser['first_name'], 'last_name': fbUser['last_name'], 'fb_id': fbUser['id'], 'prof_pic': fbUser['picture']['data']['url'] })
 
     user = db.findUserById(user_id)
+    user['new'] = new_user
     resp = '<h1 id="user" style="color:white;">' + json.dumps(user) + '</h1>'
 
     return html(resp)
